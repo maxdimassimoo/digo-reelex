@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 on 7+ Score & Analysis — Reelex Packaging Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #F2C12E;
+            --gold-dk: #C9970D;
+            --black: #080808;
+            --near-black: #111111;
+            --dark: #1A1A1A;
+            --mid: #2A2A2A;
+            --grey: #888888;
+            --light: #F5F0E8;
+            --white: #FFFFFF;
+            --red-soft: #e74c3c;
+            --green: #2ecc71;
+            --amber: #F2C12E;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--black);
+            color: rgba(255,255,255,0.7);
+            line-height: 1.75;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 4vw; height: 64px;
+            background: rgba(8,8,8,0.88);
+            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .nav-left { display: flex; align-items: center; gap: 16px; }
+        .nav-logo-img { height: 28px; }
+        .nav-divider { width: 1px; height: 24px; background: rgba(255,255,255,0.12); }
+        .nav-label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
+        .nav-right { display: flex; gap: 28px; align-items: center; }
+        .nav-link { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s; }
+        .nav-link:hover { color: var(--gold); }
+        .nav-cta { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 10px 24px; border: 1px solid rgba(242,193,46,0.4); transition: all 0.3s ease; }
+        .nav-cta:hover { background: var(--gold); color: var(--black); }
+
+        /* EYEBROW + RULE */
+        .eyebrow { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+        .rule { width: 48px; height: 3px; background: var(--gold); margin-bottom: 28px; }
+
+        /* HERO */
+        .hero { padding: 140px 8vw 80px; background: var(--black); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 70% 30%, rgba(242,193,46,0.04) 0%, transparent 60%); pointer-events: none; }
+        .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+        .hero-text .eyebrow { margin-bottom: 20px; }
+        .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4.5vw, 64px); font-weight: 900; color: var(--white); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .hero-title { font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.55); margin-bottom: 32px; }
+        .hero-stats { display: flex; gap: 40px; }
+        .hero-stat-value { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; color: var(--gold); line-height: 1; }
+        .hero-stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 6px; }
+        .hero-photo-area { display: flex; justify-content: center; align-items: center; }
+        .photo-ring { width: 300px; height: 300px; border-radius: 50%; border: 3px solid rgba(242,193,46,0.35); padding: 4px; background: linear-gradient(135deg, rgba(242,193,46,0.12) 0%, transparent 60%); }
+        .photo-inner { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: var(--dark); display: flex; align-items: center; justify-content: center; }
+        .photo-inner img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-initials { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; color: rgba(255,255,255,0.2); }
+
+        /* SCORE SECTION */
+        .score-section { padding: 100px 8vw; background: var(--near-black); border-top: 3px solid var(--gold); }
+        .score-inner { max-width: 1200px; margin: 0 auto; }
+        .score-header { text-align: center; margin-bottom: 60px; }
+        .score-header .eyebrow { margin-bottom: 16px; }
+        .score-header .rule { margin: 0 auto 28px; }
+        .score-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 900; color: var(--white); line-height: 1.12; margin-bottom: 16px; }
+        .score-header p { max-width: 640px; margin: 0 auto; color: rgba(255,255,255,0.55); }
+        .score-display { display: flex; align-items: center; justify-content: center; gap: 60px; margin-bottom: 60px; }
+        .score-circle { width: 220px; height: 220px; border-radius: 50%; border: 4px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; background: radial-gradient(circle, rgba(242,193,46,0.06) 0%, transparent 70%); }
+        .score-number { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; color: var(--gold); line-height: 1; }
+        .score-total { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; margin-top: 4px; }
+        .score-context { max-width: 400px; }
+        .score-context h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+        .score-context p { color: rgba(255,255,255,0.6); font-size: 15px; }
+        .score-context .highlight { color: var(--gold); font-weight: 500; }
+
+        /* 7 COMPONENTS GRID */
+        .components-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; }
+        .component-card { background: var(--dark); padding: 32px; position: relative; overflow: hidden; }
+        .component-card::before { content: ''; position: absolute; top: 0; left: 0; width: var(--bar-width, 0%); height: 3px; background: var(--bar-color, var(--gold)); transition: width 1s ease; }
+        .component-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+        .component-name { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); }
+        .component-score { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; line-height: 1; }
+        .score-low { color: var(--red-soft); }
+        .score-mid { color: var(--amber); }
+        .score-high { color: var(--green); }
+        .component-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 16px; overflow: hidden; }
+        .component-bar-fill { height: 100%; border-radius: 2px; transition: width 1.2s ease; }
+        .bar-low { background: var(--red-soft); }
+        .bar-mid { background: var(--amber); }
+        .bar-high { background: var(--green); }
+        .component-insight { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+        /* DIGITAL FOOTPRINT */
+        .footprint-section { padding: 100px 8vw; background: var(--black); }
+        .footprint-inner { max-width: 1200px; margin: 0 auto; }
+        .footprint-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; margin-top: 48px; }
+        .footprint-card { background: var(--dark); padding: 28px; text-align: center; }
+        .footprint-icon { font-size: 28px; margin-bottom: 12px; }
+        .footprint-channel { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 8px; }
+        .footprint-status { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; margin-bottom: 12px; }
+        .status-active { background: rgba(46,204,113,0.15); color: var(--green); }
+        .status-weak { background: rgba(242,193,46,0.15); color: var(--amber); }
+        .status-absent { background: rgba(231,76,60,0.12); color: var(--red-soft); }
+        .footprint-detail { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+        /* OPPORTUNITY */
+        .opportunity-section { padding: 100px 8vw; background: var(--dark); border-top: 3px solid var(--gold); }
+        .opportunity-inner { max-width: 1000px; margin: 0 auto; }
+        .opp-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; }
+        .opp-col h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 20px; }
+        .opp-item { display: flex; gap: 12px; margin-bottom: 20px; }
+        .opp-bullet { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; margin-top: 8px; }
+        .bullet-gold { background: var(--gold); }
+        .bullet-red { background: var(--red-soft); }
+        .opp-text { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .opp-text strong { color: var(--white); font-weight: 500; }
+
+        /* COMPETITIVE LANDSCAPE */
+        .competitive-section { padding: 100px 8vw; background: var(--black); }
+        .competitive-inner { max-width: 1200px; margin: 0 auto; }
+        .competitor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2px; margin-top: 48px; }
+        .competitor-card { background: var(--dark); padding: 28px 32px; border-left: 3px solid rgba(255,255,255,0.06); transition: border-color 0.3s; }
+        .competitor-card:hover { border-left-color: var(--gold); }
+        .competitor-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+        .competitor-type { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+        .competitor-detail { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+        /* MARKET */
+        .market-section { padding: 100px 8vw; background: var(--near-black); }
+        .market-inner { max-width: 1200px; margin: 0 auto; }
+        .market-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin: 48px 0; }
+        .market-stat-card { background: var(--dark); padding: 32px 24px; text-align: center; }
+        .market-stat-number { font-family: 'Playfair Display', serif; font-size: clamp(32px, 3.5vw, 48px); font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+        .market-stat-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); line-height: 1.4; }
+        .pressure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 48px; }
+        .pressure-card { background: var(--dark); padding: 28px 32px; border-top: 3px solid var(--red-soft); }
+        .pressure-card.tailwind { border-top-color: var(--green); }
+        .pressure-icon { font-size: 24px; margin-bottom: 12px; }
+        .pressure-title { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .pressure-detail { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+        .pressure-tag { display: inline-block; font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; margin-top: 12px; }
+        .tag-headwind { background: rgba(231,76,60,0.12); color: var(--red-soft); }
+        .tag-tailwind { background: rgba(46,204,113,0.15); color: var(--green); }
+
+        /* LOCKED */
+        .locked-section { padding: 100px 8vw; background: var(--near-black); text-align: center; position: relative; overflow: hidden; }
+        .locked-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 50%, rgba(242,193,46,0.03) 0%, transparent 60%); pointer-events: none; }
+        .locked-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+        .locked-icon { font-size: 48px; margin-bottom: 24px; opacity: 0.6; }
+        .locked-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 40px); font-weight: 900; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+        .locked-inner p { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 36px; }
+        .locked-preview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 40px; align-items: stretch; }
+        .preview-item { background: var(--dark); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 20px 16px; position: relative; display: flex; flex-direction: column; }
+        .preview-item::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 30%, var(--dark) 90%); pointer-events: none; }
+        .preview-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+        .preview-blur { font-size: 14px; color: rgba(255,255,255,0.2); filter: blur(4px); user-select: none; line-height: 1.5; }
+        .cta-button { display: inline-block; padding: 16px 48px; background: var(--gold); color: var(--black); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; border: 2px solid var(--gold); }
+        .cta-button:hover { background: transparent; color: var(--gold); }
+
+        /* FOOTER */
+        footer { padding: 64px 8vw; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); background: var(--black); }
+        .footer-logo-img { height: 22px; opacity: 0.45; margin-bottom: 20px; }
+        .footer-rule { width: 32px; height: 2px; background: var(--gold); margin: 0 auto 20px; opacity: 0.4; }
+        .footer-text { font-size: 12px; color: rgba(255,255,255,0.25); line-height: 1.8; }
+
+        /* ANIMATION */
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-photo-area { order: -1; }
+            .hero-stats { justify-content: center; }
+            .score-display { flex-direction: column; text-align: center; }
+            .opp-columns { grid-template-columns: 1fr; }
+            .market-stats-row { grid-template-columns: repeat(2, 1fr); }
+            section, .hero, .score-section, .footprint-section, .opportunity-section, .competitive-section, .market-section, .locked-section { padding: 64px 6vw; }
+        }
+        @media (max-width: 640px) {
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .components-grid { grid-template-columns: 1fr; }
+            .locked-preview { grid-template-columns: 1fr; }
+            .market-stats-row { grid-template-columns: 1fr; }
+            .competitor-grid { grid-template-columns: 1fr; }
+            .pressure-grid { grid-template-columns: 1fr; }
+            section, .hero, .score-section, .footprint-section, .opportunity-section, .competitive-section, .market-section, .locked-section { padding: 48px 5vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <img class="nav-logo-img" src="data:image/png;base64,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" alt="DiGo">
+            <div class="nav-divider"></div>
+            <span class="nav-label">7 on 7+ Score & Analysis</span>
+        </div>
+        <div class="nav-right">
+            <a href="#score" class="nav-link">Score</a>
+            <a href="#components" class="nav-link">Breakdown</a>
+            <a href="#footprint" class="nav-link">Footprint</a>
+            <a href="#opportunity" class="nav-link">Opportunity</a>
+            <a href="#landscape" class="nav-link">Landscape</a>
+            <a href="#market" class="nav-link">Market</a>
+            <a href="#next" class="nav-cta">Schedule Review</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text fade-up">
+                <p class="eyebrow">Prepared for</p>
+                <h1 class="hero-name">David<br>Gerhart</h1>
+                <p class="hero-title">Chief Executive Officer — Reelex Packaging Solutions</p>
+                <div class="hero-stats">
+                    <div>
+                        <div class="hero-stat-value">70+</div>
+                        <div class="hero-stat-label">Years in Market</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-value">100+</div>
+                        <div class="hero-stat-label">Global Licensees</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-value">88</div>
+                        <div class="hero-stat-label">Patents Held</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-photo-area fade-up">
+                <div class="photo-ring">
+                    <div class="photo-inner">
+                        <img src="data:image/jpeg;base64,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" alt="David Gerhart" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                        <span class="photo-initials" style="display:none;">DG</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="score-section" id="score">
+        <div class="score-inner">
+            <div class="score-header fade-up">
+                <p class="eyebrow">Your 7x7+ Score</p>
+                <div class="rule"></div>
+                <h2>How Reelex Packaging Solutions Shows Up</h2>
+                <p>Your website is the clearest public expression of how your leadership thinks and goes to market. We scored Reelex across 7 strategic components — from brand clarity to digital presence — each rated 1 to 7.</p>
+            </div>
+            <div class="score-display fade-up">
+                <div class="score-circle">
+                    <div class="score-number">14</div>
+                    <div class="score-total">out of 49</div>
+                </div>
+                <div class="score-context">
+                    <h3>Strong product clarity — but the brand is invisible beyond the equipment.</h3>
+                    <p>Reelex has <span class="highlight">70 years of patented innovation</span>, 100+ licensees, and 140+ manufacturing plants worldwide. But across every channel, the signal is the same: specialized packaging technology company. No leadership voice, no culture, no category narrative. The product speaks — but the brand doesn't. At <span class="highlight">14 out of 49</span>, the gap between substance and signal is where the legend gets built.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 0 8vw 100px; background: var(--near-black);" id="components">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="components-grid">
+                <div class="component-card fade-up">
+                    <div class="component-header">
+                        <span class="component-name">First Impression</span>
+                        <span class="component-score score-low">3</span>
+                    </div>
+                    <div class="component-bar"><div class="component-bar-fill bar-low" style="width: 42.8%;"></div></div>
+                    <p class="component-insight">Specialized and product-focused — reinforced across social and the website alike. The first impression is consistent: a packaging technology company with a clear, specific solution. But the impression is narrow. No broader perspective, no category authority, no leadership voice. Clear, but not compelling.</p>
+                </div>
+                <div class="component-card fade-up">
+                    <div class="component-header">
+                        <span class="component-name">Impact</span>
+                        <span class="component-score score-low">2</span>
+                    </div>
+                    <div class="component-bar"><div class="component-bar-fill bar-low" style="width: 28.6%;"></div></div>
+                    <p class="component-insight">Product demonstrations confirm the technology works — YouTube adds strong proof of concept, and the website reinforces technical value. But impact stays at the functional level. Moderate at best. No emotional narrative, no category-defining moment. The figure-eight coil that eliminated tangles forever? That story should hit harder than a product demo.</p>
+                </div>
+                <div class="component-card fade-up">
+                    <div class="component-header">
+                        <span class="component-name">Originality</span>
+                        <span class="component-score score-low">2</span>
+                    </div>
+                    <div class="component-bar"><div class="component-bar-fill bar-low" style="width: 28.6%;"></div></div>
+                    <p class="component-insight">Clear but narrow focus — reinforced across channels. The patented figure-eight coiling system is genuinely original technology, born from military applications. But the brand presents it as product explanation, not origin story. The innovation is real; the narrative that makes it feel original is completely missing.</p>
+                </div>
+                <div class="component-card fade-up">
+                    <div class="component-header">
+                        <span class="component-name">Culture</span>
+                        <span class="component-score score-low">1</span>
+                    </div>
+                    <div class="component-bar"><div class="component-bar-fill bar-low" style="width: 14.3%;"></div></div>
+                    <p class="component-insight">Not visible across any channel. No sense of the people, values, or working environment behind the technology. For a 70-year family-owned company with a global licensee network, this is a blank canvas waiting to be filled.</p>
+                </div>
+                <div class="component-card fade-up">
+                    <div class="component-header">
+                        <span class="component-name">Consistency</span>
+                        <span class="component-score score-low">2</span>
+                    </div>
+                    <div class="component-bar"><div class="component-bar-fill bar-low" style="width: 28.6%;"></div></div>
+                    <p class="component-insight">Present but not high-frequency. The posting cadence across LinkedIn is intermittent — consistent over time, but not active enough to build momentum. The website confirms the same signal as social. Consistency of message exists, but consistency of presence does not.</p>
+                </div>
+                <div class="component-card fade-up">
+                    <div class="component-header">
+                        <span class="component-name">Audience</span>
+                        <span class="component-score score-low">2</span>
+                    </div>
+                    <div class="component-bar"><div class="component-bar-fill bar-low" style="width: 28.6%;"></div></div>
+                    <p class="component-insight">Technical buyers and manufacturers — reinforced across LinkedIn and the website. The audience is clear but extremely narrow. No content speaks to procurement leaders, C-suite decision-makers, or the broader industry. The expertise is demonstrated through explanation rather than broader perspective.</p>
+                </div>
+                <div class="component-card fade-up">
+                    <div class="component-header">
+                        <span class="component-name">Visuals</span>
+                        <span class="component-score score-low">2</span>
+                    </div>
+                    <div class="component-bar"><div class="component-bar-fill bar-low" style="width: 28.6%;"></div></div>
+                    <p class="component-insight">Functional across every channel. Product visuals, diagrams, and equipment photos serve an explanatory purpose — but there's no visual brand identity. The social first impression and website confirmation are aligned: both functional, neither inspiring. The machinery, the coils, the physics of tension-free dispensing — all deserve category-defining creative.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footprint-section" id="footprint">
+        <div class="footprint-inner">
+            <div class="fade-up">
+                <p class="eyebrow">Digital Footprint Scan</p>
+                <div class="rule"></div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 900; color: var(--white); line-height: 1.12;">Where You're Showing Up — and Where You're Not</h2>
+            </div>
+            <div class="footprint-grid">
+                <div class="footprint-card fade-up">
+                    <div class="footprint-icon">&#x1F310;</div>
+                    <div class="footprint-channel">Website</div>
+                    <span class="footprint-status status-active">Active</span>
+                    <p class="footprint-detail">Clear product communication.<br>Reinforces technical value.<br>Limited leadership voice.</p>
+                </div>
+                <div class="footprint-card fade-up">
+                    <div class="footprint-icon">in</div>
+                    <div class="footprint-channel">LinkedIn</div>
+                    <span class="footprint-status status-active">Active</span>
+                    <p class="footprint-detail">Consistent posting cadence.<br>Product-focused content.<br>Reinforces specialization.</p>
+                </div>
+                <div class="footprint-card fade-up">
+                    <div class="footprint-icon">&#x25B6;</div>
+                    <div class="footprint-channel">YouTube</div>
+                    <span class="footprint-status status-active">Active</span>
+                    <p class="footprint-detail">Product demonstrations.<br>Real-world application videos.<br>Strong proof of concept.</p>
+                </div>
+                <div class="footprint-card fade-up">
+                    <div class="footprint-icon">&#x1F464;</div>
+                    <div class="footprint-channel">CEO LinkedIn</div>
+                    <span class="footprint-status status-weak">Weak</span>
+                    <p class="footprint-detail">Profile present.<br>Limited posting activity.<br>No active thought leadership.</p>
+                </div>
+                <div class="footprint-card fade-up">
+                    <div class="footprint-icon">&#x25CE;</div>
+                    <div class="footprint-channel">Instagram</div>
+                    <span class="footprint-status status-weak">Weak</span>
+                    <p class="footprint-detail">Presence exists.<br>Minimal engagement.<br>Untapped visual platform.</p>
+                </div>
+                <div class="footprint-card fade-up">
+                    <div class="footprint-icon">&#x1D54F;</div>
+                    <div class="footprint-channel">X / Twitter</div>
+                    <span class="footprint-status status-absent">Absent</span>
+                    <p class="footprint-detail">No presence found.<br>Industry conversations<br>happening without you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="opportunity-section" id="opportunity">
+        <div class="opportunity-inner">
+            <div class="fade-up">
+                <p class="eyebrow">The Opportunity</p>
+                <div class="rule"></div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 900; color: var(--white); line-height: 1.12; margin-bottom: 12px;">What Your Score Reveals</h2>
+                <p style="max-width: 700px; color: rgba(255,255,255,0.55);">A score of 14 out of 49 tells a clear story: strong product clarity with limited leadership voice and broader category perspective. The substance is real — the signal is narrow. Here's what we see.</p>
+            </div>
+            <div class="opp-columns">
+                <div class="opp-col fade-up">
+                    <h3>What's Working</h3>
+                    <div class="opp-item">
+                        <div class="opp-bullet bullet-gold"></div>
+                        <p class="opp-text"><strong>70 years of patented innovation.</strong> 88 patents across 16+ countries. The IP moat is deep and the technology is the industry standard for telecom cable packaging.</p>
+                    </div>
+                    <div class="opp-item">
+                        <div class="opp-bullet bullet-gold"></div>
+                        <p class="opp-text"><strong>100+ licensees in 140+ plants.</strong> A global network that most B2B companies would kill for. The business model works — at scale.</p>
+                    </div>
+                    <div class="opp-item">
+                        <div class="opp-bullet bullet-gold"></div>
+                        <p class="opp-text"><strong>Product clarity is strong.</strong> Across LinkedIn, YouTube, and the website, the core value proposition — tangle-free, cost-efficient, faster dispensing — comes through clearly.</p>
+                    </div>
+                    <div class="opp-item">
+                        <div class="opp-bullet bullet-gold"></div>
+                        <p class="opp-text"><strong>New machinery launches in market.</strong> The S320e, Dual Head Spooler, and POD system show active innovation. The product roadmap is alive.</p>
+                    </div>
+                </div>
+                <div class="opp-col fade-up">
+                    <h3>What's Missing</h3>
+                    <div class="opp-item">
+                        <div class="opp-bullet bullet-red"></div>
+                        <p class="opp-text"><strong>No origin story.</strong> Reelex was born from military applications — a reusable backpack for dispensing twin axial cable in the field. That story isn't being told anywhere. It should be the foundation of the brand.</p>
+                    </div>
+                    <div class="opp-item">
+                        <div class="opp-bullet bullet-red"></div>
+                        <p class="opp-text"><strong>The CEO is invisible.</strong> David Gerhart brings Kellogg MBA, Emerson leadership, and cross-industry experience — but online, he's a name and a title. The CEO is the brand's most underutilized asset.</p>
+                    </div>
+                    <div class="opp-item">
+                        <div class="opp-bullet bullet-red"></div>
+                        <p class="opp-text"><strong>Culture scored 1 out of 7.</strong> Not visible across any channel — social or website. No employee stories, no behind-the-scenes content, no licensee testimonials. For a family-owned company with a 70-year legacy, the human side is a blank canvas.</p>
+                    </div>
+                    <div class="opp-item">
+                        <div class="opp-bullet bullet-red"></div>
+                        <p class="opp-text"><strong>No category narrative.</strong> Content is all product, no perspective. No industry point of view, no thought leadership on automation, sustainability, or the future of cable packaging. Reelex presents as a vendor, not a category authority.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="competitive-section" id="landscape">
+        <div class="competitive-inner">
+            <div class="fade-up">
+                <p class="eyebrow">Competitive Landscape</p>
+                <div class="rule"></div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 900; color: var(--white); line-height: 1.12; margin-bottom: 12px;">Who's Circling the Category You Created</h2>
+                <p style="max-width: 700px; color: rgba(255,255,255,0.55);">Reelex invented reel-less cable packaging. But the competitive field is evolving — vertically integrated giants, proprietary alternatives, and low-cost manufacturers are all circling. Here's who's in the frame.</p>
+            </div>
+            <div class="competitor-grid">
+                <div class="competitor-card fade-up">
+                    <div class="competitor-name">Windak Group</div>
+                    <div class="competitor-type">Direct Equipment Competitor</div>
+                    <p class="competitor-detail">Specializes in payoffs, take-ups, and rewind lines for cable winding. Competes head-to-head on the machinery side with a focus on automation and speed. European base with global reach — and they're investing in modernizing their digital presence.</p>
+                </div>
+                <div class="competitor-card fade-up">
+                    <div class="competitor-name">Encore Wire</div>
+                    <div class="competitor-type">Proprietary Packaging Innovator</div>
+                    <p class="competitor-detail">Developed proprietary packaging solutions that bypass Reelex licensing entirely. They're proving that wire manufacturers with enough scale will build their own packaging if the brand story doesn't justify the premium.</p>
+                </div>
+                <div class="competitor-card fade-up">
+                    <div class="competitor-name">Southwire</div>
+                    <div class="competitor-type">Vertically Integrated Giant</div>
+                    <p class="competitor-detail">One of North America's largest wire & cable manufacturers. Vertically integrated with massive scale — and the resources to develop in-house packaging alternatives at will. If licensing economics shift, they could bypass Reelex entirely.</p>
+                </div>
+                <div class="competitor-card fade-up">
+                    <div class="competitor-name">Prysmian Group</div>
+                    <div class="competitor-type">Consolidation Threat</div>
+                    <p class="competitor-detail">The world's largest cable manufacturer. Active acquirer with a history of vertical integration. Any move into proprietary packaging could reshape the entire competitive landscape overnight.</p>
+                </div>
+                <div class="competitor-card fade-up">
+                    <div class="competitor-name">JOC Machinery</div>
+                    <div class="competitor-type">Low-Cost Alternative</div>
+                    <p class="competitor-detail">Cable machinery manufacturer offering automated spooling and take-up systems with tension regulation. Competes on price in cost-sensitive markets. If Reelex is seen as "just equipment," low-cost alternatives win on spreadsheets.</p>
+                </div>
+                <div class="competitor-card fade-up">
+                    <div class="competitor-name">Liberty Cable / Cool Spool</div>
+                    <div class="competitor-type">Alternative System</div>
+                    <p class="competitor-detail">Standardized reel/box systems with adjustable braking for tangle-free pulls. A different approach to the same problem Reelex solves. Not as technically elegant — but good enough for some buyers, and easier to explain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="market-section" id="market">
+        <div class="market-inner">
+            <div class="fade-up">
+                <p class="eyebrow">Market Context</p>
+                <div class="rule"></div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 900; color: var(--white); line-height: 1.12; margin-bottom: 12px;">The Industry Around You</h2>
+                <p style="max-width: 700px; color: rgba(255,255,255,0.55);">The global wire & cable market is a $230B+ industry growing at 6-7% annually — and the packaging automation market is accelerating behind it. Reelex sits at the intersection of both.</p>
+            </div>
+            <div class="market-stats-row fade-up">
+                <div class="market-stat-card">
+                    <div class="market-stat-number">$230B+</div>
+                    <div class="market-stat-label">Global Wire &<br>Cable Market</div>
+                </div>
+                <div class="market-stat-card">
+                    <div class="market-stat-number">6.9%</div>
+                    <div class="market-stat-label">Annual Growth<br>Rate (CAGR)</div>
+                </div>
+                <div class="market-stat-card">
+                    <div class="market-stat-number">$16.5B</div>
+                    <div class="market-stat-label">U.S. Packaging<br>Automation Market</div>
+                </div>
+                <div class="market-stat-card">
+                    <div class="market-stat-number">140+</div>
+                    <div class="market-stat-label">Plants Using<br>Reelex Worldwide</div>
+                </div>
+            </div>
+            <div class="fade-up" style="margin-top: 64px;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px;">What Keeps You Up at Night</h3>
+                <p style="color: rgba(255,255,255,0.45); margin-bottom: 8px;">Every industrial category creator faces the same question: how do you maintain leadership as the market evolves around you? These are the forces shaping Reelex's next chapter.</p>
+            </div>
+            <div class="pressure-grid">
+                <div class="pressure-card fade-up">
+                    <div class="pressure-icon">&#x2699;&#xFE0F;</div>
+                    <div class="pressure-title">Patent Cliff Risk</div>
+                    <p class="pressure-detail">88 patents provide significant protection — but patents expire. As core IP ages, the moat narrows. Brand strength, licensee relationships, and switching costs become the real defensibility.</p>
+                    <span class="pressure-tag tag-headwind">Headwind</span>
+                </div>
+                <div class="pressure-card fade-up">
+                    <div class="pressure-icon">&#x1F3ED;</div>
+                    <div class="pressure-title">Vertical Integration</div>
+                    <p class="pressure-detail">Giants like Southwire and Prysmian have the resources to develop in-house alternatives. If licensing economics shift, they could bypass Reelex entirely. The bigger your customers get, the more they consider building versus buying.</p>
+                    <span class="pressure-tag tag-headwind">Headwind</span>
+                </div>
+                <div class="pressure-card fade-up">
+                    <div class="pressure-icon">&#x1F4C9;</div>
+                    <div class="pressure-title">Commoditization Pressure</div>
+                    <p class="pressure-detail">Low-cost manufacturers and generic coil wrappers erode the premium positioning. Without a stronger brand narrative, Reelex risks being evaluated on spec sheets and price — where copycats close the gap.</p>
+                    <span class="pressure-tag tag-headwind">Headwind</span>
+                </div>
+                <div class="pressure-card tailwind fade-up">
+                    <div class="pressure-icon">&#x1F310;</div>
+                    <div class="pressure-title">Data Center & E-Commerce Boom</div>
+                    <p class="pressure-detail">Explosive demand for structured cabling, fiber optics, and networking cable driven by cloud infrastructure and e-commerce logistics. More cable being manufactured globally means more cable that needs packaging.</p>
+                    <span class="pressure-tag tag-tailwind">Tailwind</span>
+                </div>
+                <div class="pressure-card tailwind fade-up">
+                    <div class="pressure-icon">&#x1F916;</div>
+                    <div class="pressure-title">Labor-Shortage-Driven Automation</div>
+                    <p class="pressure-detail">Over 50% of companies are investing in packaging automation. Reelex's new S320e and Dual Head Spooler are perfectly timed for manufacturers who can't find workers.</p>
+                    <span class="pressure-tag tag-tailwind">Tailwind</span>
+                </div>
+                <div class="pressure-card tailwind fade-up">
+                    <div class="pressure-icon">&#x267B;&#xFE0F;</div>
+                    <div class="pressure-title">Sustainability Regulations</div>
+                    <p class="pressure-detail">Reelex's reel-less coils use less material, ship flatter, and reduce waste — 39% less volume than traditional spools. As sustainability mandates tighten, the environmental advantage becomes a buying criterion.</p>
+                    <span class="pressure-tag tag-tailwind">Tailwind</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="locked-section" id="next">
+        <div class="locked-inner fade-up">
+            <div class="locked-icon">&#x1F512;</div>
+            <p class="eyebrow" style="margin-bottom: 20px;">Unlock Your Full Roadmap</p>
+            <h2>Your Future-State<br>Brand Expression</h2>
+            <p>We've built a vision of what Reelex could look like — a reimagined digital presence that matches the caliber of a 70-year category-creating company. Your full 7 on 7+ Score & Analysis includes:</p>
+            <div class="locked-preview">
+                <div class="preview-item">
+                    <div class="preview-label">Phase 1</div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--white); margin: 8px 0 6px;">Brand Identity Strategy</h4>
+                    <p class="preview-blur">Clarify your positioning, origin story, and visual identity to match the caliber of a 70-year category-creating company</p>
+                </div>
+                <div class="preview-item">
+                    <div class="preview-label">Phase 2</div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--white); margin: 8px 0 6px;">Brand Amplification Strategy</h4>
+                    <p class="preview-blur">Build the content engine, thought leadership, and social presence that makes Reelex impossible to ignore</p>
+                </div>
+                <div class="preview-item">
+                    <div class="preview-label">Phase 3</div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--white); margin: 8px 0 6px;">Media & Distribution Strategy</h4>
+                    <p class="preview-blur">Launch the channels, campaigns, and conversion architecture that turn visibility into revenue</p>
+                </div>
+            </div>
+            <a href="mailto:lee@digobrands.com?subject=7x7%20Score%20Review%20-%20Reelex%20Packaging%20Solutions&body=I'd%20like%20to%20schedule%20a%20call%20to%20discuss%20improving%20my%20company's%207on7%20score%20and%20building%20a%20legendary%20brand." class="cta-button">YES, I WANT TO BUILD A LEGENDARY BRAND. LET'S MOVE TO THE NEXT STEP.</a>
+        </div>
+    </section>
+
+    <footer>
+        <img class="footer-logo-img" src="data:image/png;base64,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" alt="DiGo">
+        <div class="footer-rule"></div>
+        <p class="footer-text">
+            7 on 7+ Score & Analysis — Prepared by DiGo (DiMassimo Goldstein)<br>
+            Powered by the 7x7 scoring methodology developed by Alan Power &amp; Gair Maxwell<br>
+            Extended digital analysis by Tony Bodoh &amp; the DiGo team<br><br>
+            Confidential — Prepared March 2026
+        </p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
